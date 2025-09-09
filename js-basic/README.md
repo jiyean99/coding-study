@@ -272,6 +272,221 @@ console.log(person.greet());
 
 ---
 
+# 06: 배열(Array)
+
+## 학습 목표
+
+- 배열 선언 및 생성 방법 익히기
+- 주요 배열 메서드 사용 및 동작 이해
+- 다양한 배열 패턴과 활용 예시 실습
+
+## 배열이란?
+
+- 여러 값을 순차적으로 저장하는 자료구조
+- 인덱스로 요소를 쉽게 접근, 변경, 추가, 삭제 가능
+- 반복, 집계 등 데이터 집합 처리에 필수
+
+## 배열 선언 및 생성
+
+```js
+const arr = [1, 2, 3]; // 배열 리터럴
+const arr2 = new Array(4, 5, 6); // Array 생성자
+const arr3 = []; // 빈 배열
+```
+
+- 다양한 타입 저장 가능
+- 배열 크기는 동적으로 변함
+
+## 배열 접근과 변경
+
+```js
+console.log(arr[^0]); // 1
+arr[^1] = 100;
+console.log(arr);    // [1, 100, 3]
+```
+
+## 배열 요소 추가/삭제
+
+```js
+arr.push(4); // 뒤에 추가
+arr.unshift(0); // 앞에 추가
+arr.pop(); // 뒤에서 제거
+arr.shift(); // 앞에서 제거
+console.log(arr); // [1, 100, 3]
+```
+
+## 주요 배열 메서드 예시
+
+### forEach - 반복 처리
+
+```js
+arr.forEach((item, idx) => {
+  console.log(`인덱스 ${idx}: ${item}`);
+});
+// 인덱스 0: 1, 1: 100, 2: 3
+```
+
+### map - 변형된 새 배열 반환
+
+```js
+const squared = arr.map((n) => n ** 2);
+console.log(squared); // [1, 10000, 9]
+```
+
+### filter - 조건에 맞는 새 배열
+
+```js
+const gt10 = arr.filter((n) => n > 10);
+console.log(gt10); // [^100]
+```
+
+### find \& findIndex
+
+```js
+const found = arr.find((n) => n > 2); // 100
+const idx = arr.findIndex((n) => n > 2); // 1
+```
+
+### includes, some, every
+
+```js
+console.log(arr.includes(3)); // true
+console.log(arr.some((n) => n < 0)); // false
+console.log(arr.every((n) => n > 0)); // true
+```
+
+### reduce - 집계(누적)
+
+```js
+const sum = arr.reduce((acc, cur) => acc + cur, 0);
+console.log(sum); // 104
+```
+
+## 객체 배열과 고차 메서드 활용
+
+```js
+const users = [
+  { name: "이지연", age: 29 },
+  { name: "홍길동", age: 34 },
+];
+const names = users.map((u) => u.name);
+console.log(names); // ["이지연", "홍길동"]
+```
+
+## 배열 구조 분해 할당
+
+```js
+const [first, second] = arr2;
+console.log(first, second); // 4, 5
+```
+
+## 배열에 함수/객체 할당
+
+```js
+const mixed = [1, "hi", { x: 1 }, () => "fn"];
+console.log(typeof mixed[^3]); // "function"
+```
+
+---
+
+# 07: 객체(Object)
+
+## 학습 목표
+
+- 객체 선언과 속성 접근 방법 이해
+- 속성 추가, 수정, 삭제 방법 익히기
+- 메서드 정의와 호출법 실습
+- 객체 순회와 중첩 객체 활용 이해
+
+## 객체란?
+
+- 키(key)와 값(value)의 쌍으로 구성된 데이터 집합
+- 다양한 타입을 하나의 단위로 관리 가능
+- 점(.) 또는 대괄호([])로 속성에 접근
+
+## 객체 선언 방법
+
+```js
+const person = {
+  name: "이지연",
+  age: 28,
+  isStudent: true,
+};
+console.log(person);
+```
+
+## 속성 접근과 변경
+
+```js
+console.log(person.name); // 이지연
+person.age = 29; // 수정
+person["job"] = "개발자"; // 추가
+console.log(person);
+```
+
+## 속성 삭제
+
+```js
+delete person.isStudent;
+console.log(person);
+```
+
+## 메서드 정의
+
+```js
+const person = {
+  name: "이지연",
+  greet() {
+    return `안녕하세요, ${this.name}입니다.`;
+  },
+};
+console.log(person.greet());
+```
+
+## 객체 순회 (for...in)
+
+```js
+for (const key in person) {
+  console.log(`${key}: ${person[key]}`);
+}
+```
+
+## 중첩 객체
+
+```js
+person.address = {
+  city: "서울",
+  zipcode: "01234",
+};
+console.log(person.address.city);
+```
+
+## 구조 분해 할당
+
+```js
+const { name, age } = person;
+console.log(name, age);
+```
+
+## 동적 속성명
+
+```js
+const key = "hobby";
+person[key] = "독서";
+console.log(person.hobby);
+```
+
+## 객체와 배열, 함수 혼합 가능
+
+```js
+person.skills = ["JS", "React"];
+person.sayHello = () => "Hello!";
+console.log(person.skills);
+console.log(person.sayHello());
+```
+
+---
+
 ## 참고 링크
 
 - [MDN 공식 자바스크립트 문법 가이드](https://developer.mozilla.org/ko/docs/Web/JavaScript)
