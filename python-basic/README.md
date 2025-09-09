@@ -235,6 +235,175 @@ print(append_to_fixed(2))
 
 ---
 
+# 06: 리스트(List)
+
+## 학습 목표
+
+- 리스트 선언 및 조작, 반복, 주요 메서드 사용법 익히기
+
+## 개념 & 문법
+
+- 리스트: 순서 있는 여러 값 저장 가능, 인덱스로 접근
+- 요소 접근/수정: 인덱스와 슬라이싱 사용 가능
+- 주요 메서드: append, pop, insert, remove, sort, reverse 등
+
+```py
+
+# 리스트 선언 및 출력
+
+fruits = ["사과", "바나나", "오렌지"]
+numbers =[1][2][3][4]
+mixed = [True, 7, "Hi"]
+
+print("fruits:", fruits)
+print("numbers:", numbers)
+print("mixed:", mixed)
+
+# 인덱스 접근 및 수정
+
+print(f"fruits: {fruits}")  # 바나나
+fruits = "포도"
+print("수정된 fruits:", fruits)
+
+# 요소 추가: append (뒤), insert (중간)
+
+fruits.append("키위")
+print("append 후:", fruits)
+fruits.insert(0, "레몬")
+print("insert(0, '레몬') 후:", fruits)
+
+# 요소 제거: pop (뒤), remove (값), del (인덱스)
+
+fruits.pop()
+print("pop 후:", fruits)
+fruits.remove("사과")
+print("remove('사과') 후:", fruits)
+del fruits
+print("del fruits 후:", fruits)
+
+# 리스트 반복
+
+for fruit in fruits:
+print("과일:", fruit)
+
+# 슬라이스 사용 예시
+
+print("numbers[1:3]:", numbers[1:3])
+
+# 주요 메서드 예시: sort, reverse, count, index
+
+numbers.append(2)
+print("추가 후 numbers:", numbers)
+numbers.sort()
+print("정렬 후 numbers:", numbers)
+numbers.reverse()
+print("역순 정렬 후 numbers:", numbers)
+print("2의 개수:", numbers.count(2))
+print("3의 인덱스:", numbers.index(3))
+
+# 리스트 연결 및 복사
+
+new_numbers = numbers
+print("연결된 리스트:", new_numbers)
+copied = numbers[:]
+print("복사된 리스트:", copied)
+
+# 리스트 내포 (Comprehension)
+
+squared = [x**2 for x in numbers]
+print("제곱 리스트:", squared)
+
+# 다양한 타입 저장 가능
+
+mixed.append()
+print("다양한 타입 저장:", mixed)
+
+```
+
+---
+
+# 07: 딕셔너리(Dictionary)
+
+## 학습 목표
+
+- 딕셔너리 선언, 접근, 추가, 수정, 삭제, 순회 방법 익히기
+
+## 개념 & 문법
+
+- 딕셔너리: 키(key)와 값(value) 쌍으로 이루어진 자료구조
+- 중괄호 {} 사용, 순서 없음(파이썬 3.7 이전)
+- 키로 직접 값에 접근 가능
+
+```py
+
+# 딕셔너리 선언과 출력
+
+person = {
+"name": "이지연",
+"age": 28,
+"is_student": True
+}
+print("person:", person)
+
+# 키를 통한 값 접근
+
+print("name:", person["name"])
+print("age:", person.get("age"))  # get 메서드 사용
+
+# 값 수정 및 추가
+
+person["age"] = 29
+person["job"] = "개발자"
+print("수정/추가된 person:", person)
+
+# 키 삭제
+
+del person["is_student"]
+print("삭제 후 person:", person)
+
+# pop으로 키 삭제 및 값 반환
+
+job = person.pop("job")
+print("pop한 job:", job)
+print("pop 후 person:", person)
+
+# 딕셔너리 순회 - 키만
+
+print("키 순회:")
+for key in person:
+print(key)
+
+# 딕셔너리 순회 - 키와 값
+
+print("키와 값 순회:")
+for key, value in person.items():
+print(f"{key}: {value}")
+
+# 중첩 딕셔너리 (객체 안에 객체)
+
+person["address"] = {
+"city": "서울",
+"zipcode": "01234"
+}
+print("도시:", person["address"]["city"])
+
+# 키 존재 여부 확인
+
+print("age 키 존재?", "age" in person)
+
+# 딕셔너리 복사 (얕은 복사)
+
+copy_person = person.copy()
+print("복사본:", copy_person)
+
+# dict() 함수로 딕셔너리 생성
+
+car = dict(brand="현대", model="아반떼", year=2023)
+print("car:", car)
+```
+
+---
+
 ## 참고자료
 
 - [공식 Python 튜토리얼](https://docs.python.org/3/tutorial/index.html)
